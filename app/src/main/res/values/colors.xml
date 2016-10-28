@@ -6,4 +6,5 @@
     <color name="colorWindowBg">#FFFEFEFE</color>
 
     <color name="mainBg">#ECECEC</color>
+    <color name="tip">#88303F9F</color>
 </resources>

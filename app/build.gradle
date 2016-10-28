@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+def clientIdIsNotSet = true;
+def clientSecretIsNotSet = true;
+
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
@@ -10,6 +13,29 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        if (project.hasProperty('pockethub_github_client')) {
+            resValue "string", "github_client", github_client
+            clientIdIsNotSet = false
+        } else {
+            resValue "string", "github_client", "dummy_client"
+        }
+
+        if (project.hasProperty('pockethub_github_secret')) {
+            resValue "string", "github_secret", github_secret
+            clientSecretIsNotSet = false
+        } else {
+            resValue "string", "github_secret", "dummy_secret"
+        }
+
+        String oauth = ""
+        if (project.hasProperty('pockethub_github_callback')) {
+            oauth = pockethub_github_callback
+        } else {
+            oauth = "https://github.com/smuyyh"
+        }
+        resValue "string", "github_oauth", oauth
+        resValue "string", "github_oauth_scheme", oauth.split("://")[0]
     }
     buildTypes {
         release {
@@ -22,5 +48,17 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:24.0.0-beta1'
+
+    // Rest
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    // Rx
+    compile 'io.reactivex:rxandroid:1.1.0'
+    compile 'io.reactivex:rxjava:1.1.5'
+    // Bus
+    compile 'org.greenrobot:eventbus:3.0.0'
+    // Annotation
     compile 'com.jakewharton:butterknife:7.0.1'
 }

@@ -72,9 +72,8 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         mToolbar = toolbar;
         if (mToolbar != null) {
             setSupportActionBar(mToolbar);
-            setTitle(null);
-            //getSupportActionBar().setHomeButtonEnabled(true);
-            //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
