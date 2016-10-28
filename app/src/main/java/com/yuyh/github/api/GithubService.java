@@ -1,14 +1,9 @@
 package com.yuyh.github.api;
 
-import com.yuyh.github.bean.AccessToken;
-import com.yuyh.github.bean.RequestToken;
-
 import retrofit2.Response;
-import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HEAD;
-import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -19,8 +14,7 @@ import rx.Observable;
  */
 public interface GithubService {
 
-    @POST("/login/oauth/access_token")
-    Observable<AccessToken> requestToken(@Body RequestToken requestToken);
+
 
     @GET("/gists/{id}/star")
     Observable<Response> checkIfStarred(@Path("id") String id);

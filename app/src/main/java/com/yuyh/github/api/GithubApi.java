@@ -3,8 +3,6 @@ package com.yuyh.github.api;
 import com.yuyh.github.api.support.HeaderInterceptor;
 import com.yuyh.github.api.support.LoggingInterceptor;
 import com.yuyh.github.base.Constants;
-import com.yuyh.github.bean.AccessToken;
-import com.yuyh.github.bean.RequestToken;
 import com.yuyh.github.utils.LogUtils;
 
 import java.util.concurrent.TimeUnit;
@@ -13,7 +11,6 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
 
 /**
  * @author yuyh.
@@ -33,8 +30,8 @@ public class GithubApi {
     }
 
     public GithubApi() {
-        LoggingInterceptor logging = new LoggingInterceptor(new MyLog());
-        logging.setLevel(LoggingInterceptor.Level.BODY);
+        LoggingInterceptor logging = new LoggingInterceptor(new MyLog())
+                .setLevel(LoggingInterceptor.Level.BODY);
 
         OkHttpClient client = new OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
                 .connectTimeout(20 * 1000, TimeUnit.MILLISECONDS)
@@ -58,10 +55,5 @@ public class GithubApi {
             api = new GithubApi();
         }
         return api;
-    }
-
-    public Observable<AccessToken> requestToken(String code, String clientId, String secret, String redirectUri) {
-        RequestToken requestToken = new RequestToken(clientId, secret, code, redirectUri);
-        return service.requestToken(requestToken);
     }
 }

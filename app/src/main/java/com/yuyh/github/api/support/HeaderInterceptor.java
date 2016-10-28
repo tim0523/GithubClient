@@ -1,5 +1,9 @@
 package com.yuyh.github.api.support;
 
+import android.text.TextUtils;
+
+import com.yuyh.github.manager.DataStorage;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -17,12 +21,17 @@ public final class HeaderInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request original = chain.request();
-        if (original.url().toString().contains("book/")) {
-            Request request = original.newBuilder()
-                    .addHeader("User-Agent", "ZhuiShuShenQi/3.40[preload=false;locale=zh_CN;clientidbase=android-nvidia]")
-                    .build();
-            return chain.proceed(request);
+        Request.Builder builder = original.newBuilder();
+        if (!TextUtils.isEmpty(DataStorage.getInstance().getUserToken())) {
+            builder.addHeader("Authorization", "token " + DataStorage.getInstance().getUserToken());
         }
-        return chain.proceed(original);
+        if (original.url().toString().contains("/login/oauth/access_token")) {
+            builder.addHeader("Accept", "application/json");
+        } else {
+            builder.addHeader("Accept", "application/vnd.github.v3.json")
+                    .addHeader("User-Agent", "Gitskarios");
+        }
+        Request request = builder.build();
+        return chain.proceed(request);
     }
 }
