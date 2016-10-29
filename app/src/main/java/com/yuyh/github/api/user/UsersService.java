@@ -15,6 +15,10 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public interface UsersService {
 
     // Followers

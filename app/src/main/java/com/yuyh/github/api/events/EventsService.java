@@ -9,6 +9,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public interface EventsService {
 
     //Async

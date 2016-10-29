@@ -3,6 +3,10 @@ package com.yuyh.github.base;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class RxPresenter implements BaseContract.BasePresenter {
 
     protected CompositeSubscription mCompositeSubscription;

@@ -18,7 +18,7 @@ import okio.Buffer;
 import okio.BufferedSource;
 
 /**
- * Retrofit2 Logger拦截器。
+ * Retrofit2 Logger Interceptor
  *
  * @author yuyh.
  * @date 16/8/6.

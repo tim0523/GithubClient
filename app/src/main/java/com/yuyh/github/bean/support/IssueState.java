@@ -1,5 +1,9 @@
 package com.yuyh.github.bean.support;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public enum IssueState {
     open(0),
     closed(1),

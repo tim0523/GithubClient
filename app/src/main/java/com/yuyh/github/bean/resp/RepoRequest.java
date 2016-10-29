@@ -2,6 +2,10 @@ package com.yuyh.github.bean.resp;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class RepoRequest {
 
     public String name;

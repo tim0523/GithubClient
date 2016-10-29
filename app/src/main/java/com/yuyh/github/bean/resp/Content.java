@@ -4,6 +4,10 @@ import com.yuyh.github.bean.support.ContentType;
 
 import java.util.List;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class Content extends ShaUrl implements Comparable<Content> {
 
     public ContentType type;

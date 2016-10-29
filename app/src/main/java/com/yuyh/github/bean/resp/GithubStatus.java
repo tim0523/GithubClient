@@ -1,8 +1,9 @@
 package com.yuyh.github.bean.resp;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class GithubStatus {
     public int id;
     public String created_at;

@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.yuyh.github.R;
 
 /**
+ * Translucent Bars Utils
+ *
  * @author yuyh.
  * @date 16/8/9.
  */

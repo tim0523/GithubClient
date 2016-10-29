@@ -1,5 +1,9 @@
 package com.yuyh.github.bean.resp;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class ReleaseAsset {
     public String url;
     public String browser_download_url;

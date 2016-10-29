@@ -3,6 +3,10 @@ package com.yuyh.github.bean.resp;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class Release {
 
     public String body;

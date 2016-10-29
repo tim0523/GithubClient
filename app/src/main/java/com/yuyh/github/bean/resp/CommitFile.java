@@ -2,6 +2,10 @@ package com.yuyh.github.bean.resp;
 
 import java.io.File;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class CommitFile extends GitChangeStatus {
 
     public String filename;

@@ -12,6 +12,10 @@ import com.yuyh.github.R;
 
 import butterknife.ButterKnife;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/28.
+ */
 public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
     /**

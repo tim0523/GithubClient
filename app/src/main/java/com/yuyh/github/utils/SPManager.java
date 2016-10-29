@@ -15,6 +15,10 @@ import java.io.StreamCorruptedException;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class SPManager {
 
     private static SPManager prefsUtil;

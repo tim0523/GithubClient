@@ -2,6 +2,10 @@ package com.yuyh.github.manager;
 
 import com.yuyh.github.utils.SPManager;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class DataStorage {
 
     public static final String KEY_URL = "KEY_URL";

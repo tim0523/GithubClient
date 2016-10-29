@@ -5,6 +5,10 @@ import com.yuyh.github.bean.support.IssueState;
 
 import java.util.List;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class Issue extends GithubComment {
 
     public int number;

@@ -1,5 +1,9 @@
 package com.yuyh.github.bean.resp;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class Label extends ShaUrl implements Comparable<Label> {
 
     public String name;

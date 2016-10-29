@@ -11,7 +11,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Retrofit2 Cookie拦截器。用于保存和设置Cookies
+ * Retrofit2 Header Interceptor
  *
  * @author yuyh.
  * @date 16/8/6.

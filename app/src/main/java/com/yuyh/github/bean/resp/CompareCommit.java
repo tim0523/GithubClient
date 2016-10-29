@@ -1,10 +1,11 @@
 package com.yuyh.github.bean.resp;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.util.List;
 
+/**
+ * @author yuyh.
+ * @date 2016/10/29.
+ */
 public class CompareCommit {
     public String url;
     public String html_url;
