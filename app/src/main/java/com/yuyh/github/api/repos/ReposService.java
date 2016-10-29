@@ -5,6 +5,7 @@ import com.yuyh.github.bean.resp.Repo;
 import java.util.List;
 
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -84,4 +85,10 @@ public interface ReposService {
     // Member
     @GET("/user/repos?affiliation=collaborator,organization_member")
     void userMemberRepos(@Query("page") int page, Callback<List<Repo>> callback);
+
+    //Sync
+    @GET("/repos/{owner}/{name}/collaborators/{username}")
+    Observable<Response> checkIfUserIsCollaborator(@Path("owner") String owner,
+                                                   @Path("name") String repo,
+                                                   @Path("username") String username);
 }
