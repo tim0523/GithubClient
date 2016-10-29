@@ -1,4 +1,4 @@
-package com.yuyh.github.api.repos;
+package com.yuyh.github.api.repo;
 
 import com.yuyh.github.bean.resp.Repo;
 
@@ -11,7 +11,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import rx.Observable;
 
-public interface ReposService {
+public interface RepoService {
 
     //Async
     // User repositories

@@ -1,6 +1,6 @@
 package com.yuyh.github.ui.home;
 
-import com.yuyh.github.api.repos.RepoListClient;
+import com.yuyh.github.api.repo.RepoListClient;
 import com.yuyh.github.api.user.UserInfoClient;
 import com.yuyh.github.base.RxPresenter;
 import com.yuyh.github.bean.resp.Repo;

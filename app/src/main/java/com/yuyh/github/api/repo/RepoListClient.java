@@ -1,4 +1,4 @@
-package com.yuyh.github.api.repos;
+package com.yuyh.github.api.repo;
 
 import android.support.annotation.StringDef;
 
@@ -47,6 +47,6 @@ public class RepoListClient extends BaseClient<List<Repo>> {
 
     @Override
     protected Observable<List<Repo>> getApiObservable(Retrofit retrofit) {
-        return retrofit.create(ReposService.class).userReposList(username, sort);
+        return retrofit.create(RepoService.class).userReposList(username, sort);
     }
 }
