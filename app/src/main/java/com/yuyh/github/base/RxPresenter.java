@@ -3,7 +3,7 @@ package com.yuyh.github.base;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
-public class RxPresenter<T extends BaseContract.BaseView> implements BaseContract.BasePresenter<T> {
+public class RxPresenter implements BaseContract.BasePresenter {
 
     protected CompositeSubscription mCompositeSubscription;
 

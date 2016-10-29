@@ -2,9 +2,14 @@
 <resources>
     <color name="colorPrimary">#444153</color>
     <color name="colorPrimaryDark">#383547</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#70999F</color>
     <color name="colorWindowBg">#FFFEFEFE</color>
 
     <color name="mainBg">#ECECEC</color>
     <color name="tip">#88303F9F</color>
+    <color name="colorLineBg">#BCBCBC</color>
+
+    <color name="tab_selected">#FFFFFF</color>
+    <color name="tab_unselected">#EEEEEE</color>
+    <color name="tab_scrollbar">#FFFFFF</color>
 </resources>

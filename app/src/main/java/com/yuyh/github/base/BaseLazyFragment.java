@@ -5,6 +5,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 
+import butterknife.ButterKnife;
+
 /**
  * @author yuyh.
  * @date 2016/10/28.
@@ -113,6 +115,7 @@ public class BaseLazyFragment extends BaseFragment {
         } else {
             super.setContentView(layoutResID);
         }
+        ButterKnife.bind(this, getContentView());
     }
 
     @Override
@@ -151,5 +154,6 @@ public class BaseLazyFragment extends BaseFragment {
             onDestroyViewLazy();
         }
         isInit = false;
+        ButterKnife.unbind(this);
     }
 }

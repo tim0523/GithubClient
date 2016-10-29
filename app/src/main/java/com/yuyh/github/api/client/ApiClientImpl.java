@@ -33,11 +33,11 @@ public class ApiClientImpl implements ApiClient {
 
         if (!TextUtils.isEmpty(this.hostname)) {
             hostname = this.hostname;
-            if (!hostname.endsWith("/")) {
-                hostname = hostname + "/";
-            }
+            //if (!hostname.endsWith("/")) {
+            //    hostname = hostname + "/";
+            //}
 
-            hostname = hostname + "api/v3/";
+            //hostname = hostname + "api/v3/";
         }
 
         return hostname;

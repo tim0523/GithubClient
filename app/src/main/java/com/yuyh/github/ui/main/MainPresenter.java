@@ -4,6 +4,7 @@ import com.yuyh.github.api.login.RequestTokenClient;
 import com.yuyh.github.base.RxPresenter;
 import com.yuyh.github.bean.AccessToken;
 import com.yuyh.github.bean.RequestToken;
+import com.yuyh.github.manager.DataStorage;
 import com.yuyh.github.utils.ToastUtils;
 
 import rx.Observer;
@@ -15,7 +16,7 @@ import rx.schedulers.Schedulers;
  * @author yuyh.
  * @date 2016/10/28.
  */
-public class MainPresenter extends RxPresenter<MainContract.View> implements MainContract.Presenter {
+public class MainPresenter extends RxPresenter implements MainContract.Presenter {
 
     private MainContract.View view;
 
@@ -44,6 +45,7 @@ public class MainPresenter extends RxPresenter<MainContract.View> implements Mai
                     @Override
                     public void onNext(AccessToken accessToken) {
                         ToastUtils.showSingleToast(accessToken.access_token);
+                        DataStorage.getInstance().saveUserToken(accessToken.access_token);
                         view.applyToken(accessToken.access_token);
                     }
                 });

@@ -38,7 +38,7 @@ public class MainActivity extends BaseAppCompatActivity implements MainContract.
     private String secret;
     private String redirectUri;
 
-    private MainPresenter presenter;
+    private MainPresenter mPresenter;
 
     @Override
     protected int getContentViewLayoutID() {
@@ -63,7 +63,7 @@ public class MainActivity extends BaseAppCompatActivity implements MainContract.
                 .setClosedOnStart(true)
                 .build();
 
-        presenter = new MainPresenter(this);
+        mPresenter = new MainPresenter(this);
 
         initAuth();
     }
@@ -87,7 +87,7 @@ public class MainActivity extends BaseAppCompatActivity implements MainContract.
             secret = getString(R.string.github_secret);
             redirectUri = getString(R.string.github_oauth);
 
-            presenter.requestToken(code, clientId, secret, redirectUri);
+            mPresenter.requestToken(code, clientId, secret, redirectUri);
         }
     }
 
@@ -106,5 +106,12 @@ public class MainActivity extends BaseAppCompatActivity implements MainContract.
         if (requestCode == REQ_AUTH_CODE && resultCode == RESULT_OK) {
             requestToken(data.getData());
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null)
+            mPresenter.detachView();
     }
 }

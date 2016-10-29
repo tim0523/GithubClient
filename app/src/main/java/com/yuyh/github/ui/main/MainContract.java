@@ -8,12 +8,13 @@ import com.yuyh.github.base.BaseContract;
  */
 public interface MainContract {
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
 
         void requestToken(String code, String clientId, String secret, String redirectUri);
     }
 
     interface View extends BaseContract.BaseView {
+
         void applyToken(String token);
     }
 

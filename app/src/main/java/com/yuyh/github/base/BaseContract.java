@@ -6,12 +6,11 @@ package com.yuyh.github.base;
  */
 public interface BaseContract {
 
-    interface BasePresenter<T> {
+    interface BasePresenter {
         void detachView();
     }
 
     interface BaseView {
 
     }
-
 }
