@@ -1,8 +1,9 @@
 package com.yuyh.github.bean;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
+/**
+ * @author yuyh.
+ * @date 2016/10/28.
+ */
 public class CommentRequest {
     public String body;
 }
