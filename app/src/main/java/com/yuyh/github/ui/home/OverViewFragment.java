@@ -12,7 +12,12 @@ import com.bumptech.glide.Glide;
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
 import com.yuyh.github.bean.resp.User;
+import com.yuyh.github.utils.LogUtils;
 import com.yuyh.github.utils.glide.GlideRoundTransform;
+import com.yuyh.github.widget.ptr.PtrFrameLayout;
+import com.yuyh.github.widget.ptr.PtrHandler;
+import com.yuyh.github.widget.ptr.StoreHouseHeader;
+import com.yuyh.github.widget.ptr.utils.HeaderUtils;
 
 import butterknife.Bind;
 
@@ -39,6 +44,9 @@ public class OverviewFragment extends BaseLazyFragment implements OverviewContra
     @Bind(R.id.overview_bio)
     TextView tvBio;
 
+    @Bind(R.id.frame)
+    PtrFrameLayout frame;
+
     private OverviewPresenter mPresenter;
 
     @Override
@@ -46,8 +54,35 @@ public class OverviewFragment extends BaseLazyFragment implements OverviewContra
         super.onCreateViewLazy(savedInstanceState);
         setContentView(R.layout.fragment_home_overview);
 
+        initView();
+
         mPresenter = new OverviewPresenter(this);
         mPresenter.getMyInfo();
+    }
+
+    private void initView() {
+        final StoreHouseHeader header = HeaderUtils.getPtrHeader(mActivity);
+        frame.setDurationToCloseHeader(3000);
+        frame.setHeaderView(header);
+        frame.addPtrUIHandler(header);
+
+        frame.setPtrHandler(new PtrHandler() {
+            @Override
+            public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
+                return true;
+            }
+
+            @Override
+            public void onRefreshBegin(final PtrFrameLayout frame) {
+                LogUtils.e("refresh");
+                frame.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        frame.refreshComplete();
+                    }
+                }, 2000);
+            }
+        });
     }
 
     @Override

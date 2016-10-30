@@ -78,6 +78,11 @@ public class LogUtils {
         d(tag, msg, null);
     }
 
+    public static void d(String tag, String msg, Object... args) {
+        msg = String.format(msg, args);
+        d(tag, msg.toString());
+    }
+
     public static void d(String tag, Object msg, Throwable tr) {
         log(tag, msg.toString(), tr, 'd');
     }
