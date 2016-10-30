@@ -6,6 +6,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
+import com.yuyh.github.R;
 import com.yuyh.github.widget.viewpager.indicator.Indicator;
 import com.yuyh.github.widget.viewpager.utils.ColorGradient;
 
@@ -68,7 +69,7 @@ public class OnTransitionTextListener implements Indicator.OnTransitionListener 
      * @return
      */
     public TextView getTextView(View tabItemView, int position) {
-        return (TextView) tabItemView;
+        return (TextView) tabItemView.findViewById(R.id.tvItemName);
     }
 
     @Override

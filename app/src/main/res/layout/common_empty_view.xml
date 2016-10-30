@@ -19,6 +19,6 @@
         android:layout_marginTop="10dp"
         android:drawablePadding="10dp"
         android:gravity="center"
-        android:text="暂无数据哦..." />
+        android:text="@string/no_data" />
 
 </LinearLayout>

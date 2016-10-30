@@ -1,5 +1,6 @@
 package com.yuyh.github.manager;
 
+import com.yuyh.github.bean.resp.User;
 import com.yuyh.github.utils.SPManager;
 
 /**
@@ -11,6 +12,7 @@ public class DataStorage {
     public static final String KEY_URL = "KEY_URL";
     private static final String USER_NAME = DataStorage.class.getSimpleName() + ".USER_NAME";
     private static final String USER_TOKEN = DataStorage.class.getSimpleName() + ".USER_TOKEN";
+    private static final String USER = DataStorage.class.getSimpleName() + ".USER";
 
     private static DataStorage instance;
 
@@ -44,6 +46,14 @@ public class DataStorage {
 
     public String getUrl() {
         return SPManager.getInstance().getString(KEY_URL, null);
+    }
+
+    public void saveUserInfo(User user) {
+        SPManager.getInstance().putObject(USER, user);
+    }
+
+    public User getUserInfo() {
+        return SPManager.getInstance().getObject(USER, User.class);
     }
 
     public void clear() {

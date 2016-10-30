@@ -1,10 +1,12 @@
 package com.yuyh.github.bean.resp;
 
+import java.io.Serializable;
+
 /**
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class ShaUrl {
+public class ShaUrl implements Serializable {
 
     private static final int MAX_SHA_LENGHT = 8;
 

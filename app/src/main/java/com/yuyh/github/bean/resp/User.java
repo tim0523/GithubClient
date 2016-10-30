@@ -1,10 +1,12 @@
 package com.yuyh.github.bean.resp;
 
+import java.io.Serializable;
+
 /**
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class User extends Organization {
+public class User extends Organization implements Serializable{
 
     public boolean hireable;
     public String date;

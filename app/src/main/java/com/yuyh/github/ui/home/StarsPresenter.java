@@ -1,7 +1,7 @@
 package com.yuyh.github.ui.home;
 
-import com.yuyh.github.api.repo.RepoListClient;
 import com.yuyh.github.api.repo.Sort;
+import com.yuyh.github.api.repo.StarListClient;
 import com.yuyh.github.base.RxPresenter;
 import com.yuyh.github.bean.resp.Repo;
 
@@ -16,17 +16,17 @@ import rx.schedulers.Schedulers;
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class ReposPresenter extends RxPresenter implements ReposContract.Presenter {
+public class StarsPresenter extends RxPresenter implements StarsContract.Presenter {
 
-    private ReposContract.View view;
+    private StarsContract.View view;
 
-    public ReposPresenter(ReposContract.View view) {
+    public StarsPresenter(StarsContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void getMyRepos() {
-        Subscription subscription = new RepoListClient(null, Sort.PUSHED).observable()
+    public void getMyStars(final int page) {
+        Subscription subscription = new StarListClient(1, Sort.PUSHED).observable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<Repo>>() {
@@ -42,7 +42,7 @@ public class ReposPresenter extends RxPresenter implements ReposContract.Present
 
                     @Override
                     public void onNext(List<Repo> list) {
-                        view.showMyRepos(list);
+                        view.showMyStars(page, list);
                     }
                 });
         addSubscrebe(subscription);

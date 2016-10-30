@@ -6,11 +6,17 @@ import android.support.v4.view.ViewPager;
 
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
+import com.yuyh.github.bean.resp.User;
+import com.yuyh.github.bean.support.HomeItem;
+import com.yuyh.github.manager.DataStorage;
 import com.yuyh.github.utils.ScreenUtils;
 import com.yuyh.github.widget.viewpager.indicator.IndicatorViewPager;
 import com.yuyh.github.widget.viewpager.indicator.ScrollIndicatorView;
 import com.yuyh.github.widget.viewpager.indicator.slidebar.ColorBar;
 import com.yuyh.github.widget.viewpager.indicator.transition.OnTransitionTextListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -47,6 +53,13 @@ public class HomeFragment extends BaseLazyFragment {
 
         viewPager.setOffscreenPageLimit(names.length);
         indicatorViewPager = new IndicatorViewPager(scrollIndicatorView, viewPager);
-        indicatorViewPager.setAdapter(new HomeAdapter(mActivity, names, getChildFragmentManager()));
+        User user = DataStorage.getInstance().getUserInfo();
+        List<HomeItem> list = new ArrayList<>();
+        list.add(new HomeItem(names[0]));
+        list.add(new HomeItem(names[1], user.public_repos));
+        list.add(new HomeItem(names[2]));
+        list.add(new HomeItem(names[3], user.followers));
+        list.add(new HomeItem(names[4], user.following));
+        indicatorViewPager.setAdapter(new HomeAdapter(mActivity, list, getChildFragmentManager()));
     }
 }

@@ -75,7 +75,6 @@ public class LoginActivity extends BaseAppCompatActivity {
     }
 
     private String generateUrl() {
-
         String scope = "user,public_repo,repo,delete_repo,notifications,gist";
         HttpUrl.Builder url = new HttpUrl.Builder()
                 .scheme("https")

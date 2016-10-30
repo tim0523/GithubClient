@@ -2,13 +2,14 @@ package com.yuyh.github.bean.resp;
 
 import com.yuyh.github.bean.support.UserType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class Organization extends ShaUrl {
+public class Organization extends ShaUrl  implements Serializable {
 
     public int id;
     public String login;

@@ -1,9 +1,11 @@
 package com.yuyh.github.ui.main;
 
 import com.yuyh.github.api.login.RequestTokenClient;
+import com.yuyh.github.api.user.UserInfoClient;
 import com.yuyh.github.base.RxPresenter;
 import com.yuyh.github.bean.AccessToken;
 import com.yuyh.github.bean.RequestToken;
+import com.yuyh.github.bean.resp.User;
 import com.yuyh.github.manager.DataStorage;
 import com.yuyh.github.utils.ToastUtils;
 
@@ -50,6 +52,31 @@ public class MainPresenter extends RxPresenter implements MainContract.Presenter
                     }
                 });
 
+        addSubscrebe(subscription);
+    }
+
+    @Override
+    public void requestUserInfo() {
+        Subscription subscription = new UserInfoClient().observable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<User>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(User user) {
+                        DataStorage.getInstance().saveUserInfo(user);
+                        view.showUserInfo(user);
+                    }
+                });
         addSubscrebe(subscription);
     }
 }

@@ -15,4 +15,6 @@
 
     <color name="repo_user_name">#40A0C2</color>
     <color name="repo_name">#4078C2</color>
+    <color name="common_bg">@android:color/white</color>
+    <color name="common_touch_bg">#E3E3E3</color>
 </resources>

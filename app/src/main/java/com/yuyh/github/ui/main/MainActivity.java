@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseAppCompatActivity;
+import com.yuyh.github.bean.resp.User;
 import com.yuyh.github.manager.DataStorage;
 import com.yuyh.github.ui.auth.LoginActivity;
 import com.yuyh.github.ui.home.HomeFragment;
@@ -93,6 +94,12 @@ public class MainActivity extends BaseAppCompatActivity implements MainContract.
 
     @Override
     public void applyToken(String token) {
+        mPresenter.requestUserInfo();
+    }
+
+    @Override
+    public void showUserInfo(User user) {
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         HomeFragment home = new HomeFragment();

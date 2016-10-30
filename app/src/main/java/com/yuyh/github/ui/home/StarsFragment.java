@@ -25,14 +25,14 @@ import butterknife.Bind;
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class ReposFragment extends BaseLazyFragment implements ReposContract.View {
+public class StarsFragment extends BaseLazyFragment implements StarsContract.View {
 
     @Bind(R.id.frame)
     PtrFrameLayout frame;
     @Bind(R.id.rvRepos)
     RecyclerView rvRepos;
 
-    private ReposPresenter mPresenter;
+    private StarsPresenter mPresenter;
     private LinearLayoutManager mLayoutManager;
     private RepoListAdapter mAdapter;
     private List<Repo> mList;
@@ -44,7 +44,7 @@ public class ReposFragment extends BaseLazyFragment implements ReposContract.Vie
 
         initView();
 
-        getMyRepos();
+        getMyRepos(1);
     }
 
     private void initView() {
@@ -60,7 +60,7 @@ public class ReposFragment extends BaseLazyFragment implements ReposContract.Vie
 
             @Override
             public void onRefreshBegin(final PtrFrameLayout frame) {
-                getMyRepos();
+                getMyRepos(1);
             }
         });
 
@@ -72,18 +72,19 @@ public class ReposFragment extends BaseLazyFragment implements ReposContract.Vie
         rvRepos.setAdapter(mAdapter);
     }
 
-    public void getMyRepos() {
+    public void getMyRepos(int page) {
         showLoadding();
         if (mPresenter == null) {
-            mPresenter = new ReposPresenter(this);
+            mPresenter = new StarsPresenter(this);
         }
-        mPresenter.getMyRepos();
+        mPresenter.getMyStars(page);
     }
 
     @Override
-    public void showMyRepos(List<Repo> list) {
+    public void showMyStars(int page, List<Repo> list) {
         frame.refreshComplete();
-        mAdapter.clear();
+        if (page == 1)
+            mAdapter.clear();
         mAdapter.addAll(list);
         hideLoadding();
     }

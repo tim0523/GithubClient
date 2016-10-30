@@ -53,18 +53,17 @@ public interface RepoService {
                        Callback<List<Repo>> callback);
 
     // Starred repos
-    @GET("/user/starred?sort=updated")
-    void userStarredReposList(@Query("sort") String sort, Callback<List<Repo>> callback);
+    @GET("/user/starred?sort=created")
+    Observable<List<Repo>> userStarredReposList(@Query("sort") String sort);
 
-    @GET("/user/starred?sort=updated")
-    void userStarredReposList(@Query("page") int page, @Query("sort") String sort,
-                              Callback<List<Repo>> callback);
+    @GET("/user/starred?sort=created")
+    Observable<List<Repo>> userStarredReposList(@Query("page") int page, @Query("sort") String sort);
 
-    @GET("/users/{username}/starred?sort=updated")
+    @GET("/users/{username}/starred?sort=created")
     void userStarredReposList(@Path("username") String username, @Query("sort") String sort,
                               Callback<List<Repo>> callback);
 
-    @GET("/users/{username}/starred?sort=updated")
+    @GET("/users/{username}/starred?sort=created")
     void userStarredReposList(@Path("username") String username, @Query("page") int page,
                               @Query("sort") String sort, Callback<List<Repo>> callback);
 
