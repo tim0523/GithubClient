@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.yuyh.github.R;
 import com.yuyh.github.bean.support.HomeItem;
 import com.yuyh.github.ui.home.followers.FollowersFragment;
+import com.yuyh.github.ui.home.following.FollowingFragment;
 import com.yuyh.github.ui.home.overview.OverviewFragment;
 import com.yuyh.github.ui.home.repos.ReposFragment;
 import com.yuyh.github.ui.home.stars.StarsFragment;
@@ -72,6 +73,9 @@ public class HomeAdapter extends IndicatorViewPager.IndicatorFragmentPagerAdapte
                 break;
             case 3:
                 fragment = new FollowersFragment();
+                break;
+            case 4:
+                fragment = new FollowingFragment();
                 break;
             default:
                 fragment = new ReposFragment();

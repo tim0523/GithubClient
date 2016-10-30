@@ -29,25 +29,23 @@ public interface UsersService {
     Observable<List<User>> followers(@Path("username") String username);
 
     @GET("/user/followers")
-    void followers(@Query("page") int page, Callback<List<User>> callback);
+    Observable<List<User>> followers(@Query("page") int page);
 
     @GET("/users/{username}/followers")
-    void followers(@Path("username") String username, @Query("page") int page,
-                   Callback<List<User>> callback);
+    Observable<List<User>> followers(@Path("username") String username, @Query("page") int page);
 
     // Following
     @GET("/user/following")
-    void following(Callback<List<User>> callback);
+    Observable<List<User>> following();
 
     @GET("/users/{username}/following")
-    void following(@Path("username") String username, Callback<List<User>> callback);
+    Observable<List<User>> following(@Path("username") String username);
 
     @GET("/user/following")
-    void following(@Query("page") int page, Callback<List<User>> callback);
+    Observable<List<User>> following(@Query("page") int page);
 
     @GET("/users/{username}/following")
-    void following(@Path("username") String username, @Query("page") int page,
-                   Callback<List<User>> callback);
+    Observable<List<User>> following(@Path("username") String username, @Query("page") int page);
 
     //ORGS MEMBERS
 

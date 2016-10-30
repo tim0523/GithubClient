@@ -1,8 +1,6 @@
 package com.yuyh.github.ui.home.followers;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -29,7 +27,7 @@ public class FollowersAdapter extends EasyRVAdapter<User> {
         viewHolder.setText(R.id.mTvFollowerAccount, item.login);
         Glide.with(mContext).load(item.avatar_url)
                 .override(ScreenUtils.dpToPxInt(50), ScreenUtils.dpToPxInt(50))
-                .placeholder(new ColorDrawable(Color.GRAY))
+                .placeholder(R.mipmap.ic_default_avatar)
                 .transform(new GlideCircleTransform(mContext))
                 .into((ImageView) viewHolder.getView(R.id.mIvAvatar));
 

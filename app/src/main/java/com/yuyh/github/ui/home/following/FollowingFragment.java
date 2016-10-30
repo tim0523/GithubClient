@@ -1,4 +1,4 @@
-package com.yuyh.github.ui.home.followers;
+package com.yuyh.github.ui.home.following;
 
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +9,7 @@ import android.view.View;
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
 import com.yuyh.github.bean.resp.User;
+import com.yuyh.github.ui.home.followers.FollowersAdapter;
 import com.yuyh.github.widget.MyDecoration;
 import com.yuyh.github.widget.ptr.PtrDefaultHandler;
 import com.yuyh.github.widget.ptr.PtrFrameLayout;
@@ -25,14 +26,14 @@ import butterknife.Bind;
  * @author yuyh.
  * @date 2016/10/30.
  */
-public class FollowersFragment extends BaseLazyFragment implements FollowersContract.View {
+public class FollowingFragment extends BaseLazyFragment implements FollowingContract.View {
 
     @Bind(R.id.frame)
     PtrFrameLayout mViewRefreshLaout;
     @Bind(R.id.rvRepos)
     RecyclerView mRvFollowers;
 
-    private FollowersPresenter mPresenter;
+    private FollowingPresenter mPresenter;
     private FollowersAdapter mAdapter;
 
     @Override
@@ -55,7 +56,7 @@ public class FollowersFragment extends BaseLazyFragment implements FollowersCont
 
             @Override
             public void onRefreshBegin(final PtrFrameLayout frame) {
-                getFollowersList(1);
+                getFollowingList(1);
             }
         });
 
@@ -67,20 +68,22 @@ public class FollowersFragment extends BaseLazyFragment implements FollowersCont
         }
         mRvFollowers.setAdapter(mAdapter);
 
-        getFollowersList(1);
+        getFollowingList(1);
     }
 
-    private void getFollowersList(int page) {
+    private void getFollowingList(int page) {
         showLoadding();
         if (mPresenter == null) {
-            mPresenter = new FollowersPresenter(this);
+            mPresenter = new FollowingPresenter(this);
         }
-        mPresenter.getMyFollowers();
+        mPresenter.getMyFollowing(page);
     }
 
     @Override
-    public void showMyFollowers(List<User> list) {
-        mAdapter.clear();
+    public void showMyFollowing(int page, List<User> list) {
+        if (page == 1) {
+            mAdapter.clear();
+        }
         mAdapter.addAll(list);
         hideLoadding();
     }
