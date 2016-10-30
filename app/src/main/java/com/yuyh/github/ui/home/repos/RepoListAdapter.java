@@ -1,4 +1,4 @@
-package com.yuyh.github.ui.home;
+package com.yuyh.github.ui.home.repos;
 
 import android.content.Context;
 

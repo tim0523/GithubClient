@@ -1,7 +1,7 @@
-package com.yuyh.github.ui.home;
+package com.yuyh.github.ui.home.followers;
 
 import com.yuyh.github.base.BaseContract;
-import com.yuyh.github.bean.resp.Repo;
+import com.yuyh.github.bean.resp.User;
 
 import java.util.List;
 
@@ -9,16 +9,13 @@ import java.util.List;
  * @author yuyh.
  * @date 2016/10/30.
  */
-public interface StarsContract {
+public interface FollowersContract {
 
     interface Presenter {
-
-        void getMyStars(int page);
+        void getMyFollowers();
     }
 
     interface View extends BaseContract.BaseView {
-
-        void showMyStars(int page, List<Repo> list);
+        void showMyFollowers(List<User> list);
     }
-
 }

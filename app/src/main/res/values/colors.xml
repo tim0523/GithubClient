@@ -8,6 +8,8 @@
     <color name="mainBg">#ECECEC</color>
     <color name="tip">#88303F9F</color>
     <color name="colorLineBg">#BCBCBC</color>
+    <color name="common_btn_gray_normal">#bcbcbc</color>
+    <color name="common_btn_gray_selected">#8b8682</color>
 
     <color name="tab_selected">#FFFFFF</color>
     <color name="tab_unselected">#EEEEEE</color>
@@ -17,4 +19,7 @@
     <color name="repo_name">#4078C2</color>
     <color name="common_bg">@android:color/white</color>
     <color name="common_touch_bg">#E3E3E3</color>
+
+    <color name="text_color_black">#2c2c2c</color>
+    <color name="text_color_gray">#8b8682</color>
 </resources>

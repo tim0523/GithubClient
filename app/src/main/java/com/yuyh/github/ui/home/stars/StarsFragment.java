@@ -1,4 +1,4 @@
-package com.yuyh.github.ui.home;
+package com.yuyh.github.ui.home.stars;
 
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -9,6 +9,7 @@ import android.view.View;
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
 import com.yuyh.github.bean.resp.Repo;
+import com.yuyh.github.ui.home.repos.RepoListAdapter;
 import com.yuyh.github.widget.MyDecoration;
 import com.yuyh.github.widget.ptr.PtrDefaultHandler;
 import com.yuyh.github.widget.ptr.PtrFrameLayout;

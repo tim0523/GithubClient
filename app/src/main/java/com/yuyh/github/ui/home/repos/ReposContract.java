@@ -1,4 +1,4 @@
-package com.yuyh.github.ui.home;
+package com.yuyh.github.ui.home.repos;
 
 import com.yuyh.github.base.BaseContract;
 import com.yuyh.github.bean.resp.Repo;

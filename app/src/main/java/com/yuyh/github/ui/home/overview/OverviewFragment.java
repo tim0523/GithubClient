@@ -1,4 +1,4 @@
-package com.yuyh.github.ui.home;
+package com.yuyh.github.ui.home.overview;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

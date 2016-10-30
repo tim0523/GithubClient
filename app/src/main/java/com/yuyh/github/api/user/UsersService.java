@@ -23,10 +23,10 @@ public interface UsersService {
 
     // Followers
     @GET("/user/followers")
-    void followers(Callback<List<User>> callback);
+    Observable<List<User>> followers();
 
     @GET("/users/{username}/followers")
-    void followers(@Path("username") String username, Callback<List<User>> callback);
+    Observable<List<User>> followers(@Path("username") String username);
 
     @GET("/user/followers")
     void followers(@Query("page") int page, Callback<List<User>> callback);

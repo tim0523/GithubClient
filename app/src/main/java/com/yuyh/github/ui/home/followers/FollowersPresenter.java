@@ -1,9 +1,8 @@
-package com.yuyh.github.ui.home;
+package com.yuyh.github.ui.home.followers;
 
-import com.yuyh.github.api.repo.RepoListClient;
-import com.yuyh.github.api.repo.Sort;
+import com.yuyh.github.api.user.FollowersClient;
 import com.yuyh.github.base.RxPresenter;
-import com.yuyh.github.bean.resp.Repo;
+import com.yuyh.github.bean.resp.User;
 
 import java.util.List;
 
@@ -14,22 +13,23 @@ import rx.schedulers.Schedulers;
 
 /**
  * @author yuyh.
- * @date 2016/10/29.
+ * @date 2016/10/30.
  */
-public class ReposPresenter extends RxPresenter implements ReposContract.Presenter {
+public class FollowersPresenter extends RxPresenter implements FollowersContract.Presenter {
 
-    private ReposContract.View view;
+    private FollowersContract.View view;
 
-    public ReposPresenter(ReposContract.View view) {
+    public FollowersPresenter(FollowersContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void getMyRepos() {
-        Subscription subscription = new RepoListClient(null, Sort.PUSHED).observable()
+    public void getMyFollowers() {
+        Subscription subscription=new FollowersClient()
+                .observable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<Repo>>() {
+                .subscribe(new Observer<List<User>>() {
                     @Override
                     public void onCompleted() {
 
@@ -41,8 +41,8 @@ public class ReposPresenter extends RxPresenter implements ReposContract.Present
                     }
 
                     @Override
-                    public void onNext(List<Repo> list) {
-                        view.showMyRepos(list);
+                    public void onNext(List<User> list) {
+                        view.showMyFollowers(list);
                     }
                 });
         addSubscrebe(subscription);

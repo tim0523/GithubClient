@@ -1,11 +1,9 @@
-package com.yuyh.github.ui.home;
+package com.yuyh.github.ui.home.overview;
 
-import com.yuyh.github.api.repo.Sort;
-import com.yuyh.github.api.repo.StarListClient;
+import com.yuyh.github.api.user.UserInfoClient;
 import com.yuyh.github.base.RxPresenter;
-import com.yuyh.github.bean.resp.Repo;
-
-import java.util.List;
+import com.yuyh.github.bean.resp.User;
+import com.yuyh.github.utils.LogUtils;
 
 import rx.Observer;
 import rx.Subscription;
@@ -16,20 +14,21 @@ import rx.schedulers.Schedulers;
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class StarsPresenter extends RxPresenter implements StarsContract.Presenter {
+public class OverviewPresenter extends RxPresenter implements OverviewContract.Presenter {
 
-    private StarsContract.View view;
+    private OverviewContract.View view;
 
-    public StarsPresenter(StarsContract.View view) {
+    public OverviewPresenter(OverviewContract.View view) {
         this.view = view;
     }
 
+
     @Override
-    public void getMyStars(final int page) {
-        Subscription subscription = new StarListClient(1, Sort.PUSHED).observable()
+    public void getMyInfo() {
+        Subscription subscription = new UserInfoClient().observable()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<Repo>>() {
+                .subscribe(new Observer<User>() {
                     @Override
                     public void onCompleted() {
 
@@ -41,8 +40,9 @@ public class StarsPresenter extends RxPresenter implements StarsContract.Present
                     }
 
                     @Override
-                    public void onNext(List<Repo> list) {
-                        view.showMyStars(page, list);
+                    public void onNext(User user) {
+                        LogUtils.i(user.toString());
+                        view.showMyInfo(user);
                     }
                 });
         addSubscrebe(subscription);
