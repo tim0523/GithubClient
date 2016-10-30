@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:src="@mipmap/ic_repo" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/tvRepoUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="smuyyh"
+            android:textColor="@color/repo_user_name" />
+
+        <TextView
+            android:id="@+id/tvRepoDico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvRepoUserName"
+            android:text="/"
+            android:textColor="@color/repo_user_name" />
+
+        <TextView
+            android:id="@+id/tvRepoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvRepoDico"
+            android:text="GithubClient"
+            android:textColor="@color/repo_name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRepoDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvRepoUserName"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="Github Android Client" />
+
+        <TextView
+            android:id="@+id/tvRepoStarCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvRepoDesc"
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@mipmap/ic_star"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:text="100" />
+
+        <TextView
+            android:id="@+id/tvRepoForkCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvRepoDesc"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tvRepoStarCount"
+            android:drawableLeft="@mipmap/ic_fork"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:text="100" />
+
+        <TextView
+            android:id="@+id/tvRepoLang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvRepoDesc"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tvRepoForkCount"
+            android:drawableLeft="@mipmap/ic_point_gray"
+            android:drawablePadding="2dp"
+            android:gravity="center_vertical"
+            android:text="Java" />
+
+    </RelativeLayout>
+
+</LinearLayout>

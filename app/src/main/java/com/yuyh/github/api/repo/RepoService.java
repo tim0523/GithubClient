@@ -20,7 +20,7 @@ public interface RepoService {
     //Async
     // User repositories
     @GET("/user/repos?type=owner")
-    void userReposList(@Query("sort") String sort, Callback<List<Repo>> callback);
+    Observable<List<Repo>> userReposList(@Query("sort") String sort);
 
     @GET("/user/repos?type=owner")
     void userReposList(@Query("page") int page, @Query("sort") String sort,

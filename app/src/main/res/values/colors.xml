@@ -12,4 +12,7 @@
     <color name="tab_selected">#FFFFFF</color>
     <color name="tab_unselected">#EEEEEE</color>
     <color name="tab_scrollbar">#FFFFFF</color>
+
+    <color name="repo_user_name">#40A0C2</color>
+    <color name="repo_name">#4078C2</color>
 </resources>

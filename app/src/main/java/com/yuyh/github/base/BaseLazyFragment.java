@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+
+import com.yuyh.github.R;
 
 import butterknife.ButterKnife;
 
@@ -12,11 +15,15 @@ import butterknife.ButterKnife;
  * @date 2016/10/28.
  */
 public class BaseLazyFragment extends BaseFragment {
+
     private boolean isInit = false;
     private Bundle savedInstanceState;
     public static final String INTENT_BOOLEAN_LAZYLOAD = "intent_boolean_lazyLoad";
     private boolean isLazyLoad = true;
     private FrameLayout layout;
+
+    private ProgressBar progressBar;
+    private View emptyView;
 
     @Deprecated
     protected final void onCreateView(Bundle savedInstanceState) {
@@ -116,6 +123,8 @@ public class BaseLazyFragment extends BaseFragment {
             super.setContentView(layoutResID);
         }
         ButterKnife.bind(this, getContentView());
+        progressBar = ButterKnife.findById(getContentView(), R.id.progress_bar);
+        emptyView = ButterKnife.findById(getContentView(), R.id.emptyView);
     }
 
     @Override
@@ -155,5 +164,17 @@ public class BaseLazyFragment extends BaseFragment {
         }
         isInit = false;
         ButterKnife.unbind(this);
+    }
+
+    protected void showLoadding() {
+        if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    protected void hideLoadding() {
+        if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 }

@@ -46,6 +46,18 @@ public class HomeAdapter extends IndicatorViewPager.IndicatorFragmentPagerAdapte
 
     @Override
     public Fragment getFragmentForPage(int position) {
-        return new OverviewFragment();
+        Fragment fragment;
+        switch (position) {
+            case 0:
+                fragment = new OverviewFragment();
+                break;
+            case 1:
+                fragment = new ReposFragment();
+                break;
+            default:
+                fragment = new ReposFragment();
+                break;
+        }
+        return fragment;
     }
 }

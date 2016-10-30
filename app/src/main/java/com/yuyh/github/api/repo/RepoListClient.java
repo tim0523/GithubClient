@@ -1,6 +1,7 @@
 package com.yuyh.github.api.repo;
 
 import android.support.annotation.StringDef;
+import android.text.TextUtils;
 
 import com.yuyh.github.api.client.BaseClient;
 import com.yuyh.github.bean.resp.Repo;
@@ -22,7 +23,7 @@ public class RepoListClient extends BaseClient<List<Repo>> {
             Sort.FULLNAME,
             Sort.CREATED,
             Sort.UPDATED,
-            Sort.UPDATED
+            Sort.PUSHED
     })
 
     @Retention(RetentionPolicy.SOURCE)
@@ -47,6 +48,9 @@ public class RepoListClient extends BaseClient<List<Repo>> {
 
     @Override
     protected Observable<List<Repo>> getApiObservable(Retrofit retrofit) {
-        return retrofit.create(RepoService.class).userReposList(username, sort);
+        if (TextUtils.isEmpty(username))
+            return retrofit.create(RepoService.class).userReposList(sort);
+        else
+            return retrofit.create(RepoService.class).userReposList(username, sort);
     }
 }
