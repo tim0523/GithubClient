@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorLineBg" />
+                </shape>
+            </item>
+
+            <item android:bottom="0.5dip" android:left="0.5dip" android:right="0.5dip" android:top="0.5dip">
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorPrimaryDark" />
+                </shape>
+            </item>
+
+        </layer-list>
+    </item>
+    <item android:state_pressed="true">
+        <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorLineBg" />
+                </shape>
+            </item>
+
+            <item android:bottom="0.5dip" android:left="0.5dip" android:right="0.5dip" android:top="0.5dip">
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorPrimaryDark" />
+                </shape>
+            </item>
+
+        </layer-list>
+    </item>
+    <item>
+        <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorLineBg" />
+                </shape>
+            </item>
+
+            <item android:bottom="1dp" android:left="1dp" android:right="1dp" android:top="1dp">
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorPrimary" />
+                </shape>
+            </item>
+
+        </layer-list>
+
+    </item>
+</selector>

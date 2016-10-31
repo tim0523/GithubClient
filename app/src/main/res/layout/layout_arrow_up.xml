@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/arrowUp"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:layout_gravity="right|bottom"
+    android:layout_marginBottom="@dimen/spacing_size_5"
+    android:layout_marginRight="@dimen/spacing_size_5"
+    android:background="@drawable/selector_arrow_up"
+    android:clickable="true"
+    android:padding="15dp"
+    android:src="@mipmap/arrow_up" />

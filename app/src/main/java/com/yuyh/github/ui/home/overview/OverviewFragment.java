@@ -35,6 +35,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * @author yuyh.
@@ -47,6 +48,8 @@ public class OverviewFragment extends BaseLazyFragment
     PtrFrameLayout mRefreshLayout;
     @Bind(R.id.recyclerView)
     RecyclerView mRvEvents;
+    @Bind(R.id.arrowUp)
+    View mArrowUp;
 
     static class HeaderViewHolder {
 
@@ -79,10 +82,10 @@ public class OverviewFragment extends BaseLazyFragment
     private HeaderViewHolder holder;
     private OverviewPresenter mPresenter;
 
+    private LinearLayoutManager layoutManager;
     private EventsAdapter mAdapter;
 
     private EventMatcher mEventMatcher = new EventMatcher();
-    ;
 
     @Override
     protected void onCreateViewLazy(Bundle savedInstanceState) {
@@ -112,10 +115,20 @@ public class OverviewFragment extends BaseLazyFragment
             }
         });
 
-        mRvEvents.setLayoutManager(new LinearLayoutManager(mActivity));
+        mRvEvents.setLayoutManager(layoutManager = new LinearLayoutManager(mActivity));
         mRvEvents.setItemAnimator(new DefaultItemAnimator());
         mRvEvents.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
         mRvEvents.setAdapter(mAdapter = new EventsAdapter(mActivity, new ArrayList<GithubEvent>()));
+        mRvEvents.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (layoutManager.findFirstVisibleItemPosition() > 2) {
+                    mArrowUp.setVisibility(View.VISIBLE);
+                } else {
+                    mArrowUp.setVisibility(View.GONE);
+                }
+            }
+        });
         mAdapter.setOnItemClickListener(this);
     }
 
@@ -208,6 +221,11 @@ public class OverviewFragment extends BaseLazyFragment
                 }
                 break;
         }
+    }
+
+    @OnClick(R.id.arrowUp)
+    protected void arrowUp() {
+        mRvEvents.smoothScrollToPosition(0);
     }
 
     @Override

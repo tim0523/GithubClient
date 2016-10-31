@@ -24,4 +24,6 @@
     <include layout="@layout/common_progress_bar" />
 
     <include layout="@layout/common_empty_view" />
+
+    <include layout="@layout/layout_arrow_up" />
 </FrameLayout>

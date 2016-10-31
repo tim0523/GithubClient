@@ -3,7 +3,7 @@ package com.yuyh.github.base;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import com.yuyh.github.widget.swipeback.SwipeBackHelper;
+import com.yuyh.github.swipeback.SwipeBackHelper;
 
 public abstract class BaseSwipeBackCompatActivity extends BaseAppCompatActivity {
 

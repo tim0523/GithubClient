@@ -1,4 +1,4 @@
-package com.yuyh.github.widget.swipeback;
+package com.yuyh.github.swipeback;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,6 +12,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.yuyh.github.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +102,7 @@ public class SwipeBackLayout extends FrameLayout {
         super(context, attrs);
         mDragHelper = ViewDragHelper.create(this, new ViewDragCallback());
 
-        setShadow(com.jude.swipbackhelper.R.drawable.shadow_left);
+        setShadow(R.drawable.shadow_left);
 
         final float density = getResources().getDisplayMetrics().density;
         final float minVel = MIN_FLING_VELOCITY * density;
