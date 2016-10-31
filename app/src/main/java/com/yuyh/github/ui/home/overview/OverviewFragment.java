@@ -14,8 +14,14 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
+import com.yuyh.github.bean.resp.Gist;
 import com.yuyh.github.bean.resp.GithubEvent;
+import com.yuyh.github.bean.resp.Issue;
+import com.yuyh.github.bean.resp.Repo;
 import com.yuyh.github.bean.resp.User;
+import com.yuyh.github.support.EventMatcher;
+import com.yuyh.github.support.OnRVItemClickListener;
+import com.yuyh.github.ui.repos.ReposActivity;
 import com.yuyh.github.utils.glide.GlideRoundTransform;
 import com.yuyh.github.widget.DividerItemDecoration;
 import com.yuyh.github.widget.ptr.PtrDefaultHandler;
@@ -34,7 +40,13 @@ import butterknife.ButterKnife;
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class OverviewFragment extends BaseLazyFragment implements OverviewContract.View {
+public class OverviewFragment extends BaseLazyFragment
+        implements OverviewContract.View, OnRVItemClickListener<GithubEvent> {
+
+    @Bind(R.id.refreshLayout)
+    PtrFrameLayout mRefreshLayout;
+    @Bind(R.id.recyclerView)
+    RecyclerView mRvEvents;
 
     static class HeaderViewHolder {
 
@@ -65,15 +77,12 @@ public class OverviewFragment extends BaseLazyFragment implements OverviewContra
     }
 
     private HeaderViewHolder holder;
-
-    @Bind(R.id.refreshLayout)
-    PtrFrameLayout mRefreshLayout;
-    @Bind(R.id.recyclerView)
-    RecyclerView mRvEvents;
-
     private OverviewPresenter mPresenter;
 
     private EventsAdapter mAdapter;
+
+    private EventMatcher mEventMatcher = new EventMatcher();
+    ;
 
     @Override
     protected void onCreateViewLazy(Bundle savedInstanceState) {
@@ -107,6 +116,7 @@ public class OverviewFragment extends BaseLazyFragment implements OverviewContra
         mRvEvents.setItemAnimator(new DefaultItemAnimator());
         mRvEvents.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
         mRvEvents.setAdapter(mAdapter = new EventsAdapter(mActivity, new ArrayList<GithubEvent>()));
+        mAdapter.setOnItemClickListener(this);
     }
 
     private void requestData(int page) {
@@ -153,9 +163,6 @@ public class OverviewFragment extends BaseLazyFragment implements OverviewContra
         }
 
         holder.tvBio.setText(user.bio);
-
-        mRefreshLayout.refreshComplete();
-        hideLoadding();
     }
 
     @Override
@@ -164,6 +171,43 @@ public class OverviewFragment extends BaseLazyFragment implements OverviewContra
             mAdapter.clear();
         }
         mAdapter.addAll(list);
+
+        mRefreshLayout.refreshComplete();
+        hideLoadding();
+    }
+
+    @Override
+    public void onItemClick(View view, int position, GithubEvent event) {
+        switch (event.getType()) {
+            case DownloadEvent:
+                break;
+            case PushEvent:
+                break;
+            case CommitCommentEvent:
+                break;
+            default:
+                Repo repo = mEventMatcher.getRepository(event);
+                if (repo != null) {
+                    ReposActivity.start(mActivity, repo);
+                    break;
+                }
+
+                Issue issue = mEventMatcher.getIssue(event);
+                if (issue != null) {
+                    break;
+                }
+
+                Gist gist = mEventMatcher.getGist(event);
+                if (gist != null) {
+                    break;
+                }
+
+                EventMatcher.UserPair userPair = mEventMatcher.getUsers(event);
+                if (userPair != null) {
+                    break;
+                }
+                break;
+        }
     }
 
     @Override

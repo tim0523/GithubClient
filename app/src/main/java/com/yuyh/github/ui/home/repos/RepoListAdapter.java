@@ -6,6 +6,7 @@ import com.yuyh.easyadapter.recyclerview.EasyRVAdapter;
 import com.yuyh.easyadapter.recyclerview.EasyRVHolder;
 import com.yuyh.github.R;
 import com.yuyh.github.bean.resp.Repo;
+import com.yuyh.github.utils.FormatUtils;
 
 import java.util.List;
 
@@ -24,8 +25,8 @@ public class RepoListAdapter extends EasyRVAdapter<Repo> {
         holder.setText(R.id.tvRepoUserName, item.owner.login)
                 .setText(R.id.tvRepoName, item.name)
                 .setText(R.id.tvRepoDesc, item.description)
-                .setText(R.id.tvRepoStarCount, item.stargazers_count + "")
-                .setText(R.id.tvRepoForkCount, item.forks_count + "")
+                .setText(R.id.tvRepoStarCount, FormatUtils.formatTosepara(item.stargazers_count))
+                .setText(R.id.tvRepoForkCount, FormatUtils.formatTosepara(item.forks_count))
                 .setText(R.id.tvRepoLang, item.language);
     }
 }

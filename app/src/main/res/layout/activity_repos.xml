@@ -7,6 +7,9 @@
 
     <include layout="@layout/common_toolbar" />
 
-    <include layout="@layout/layout_web_progress" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWindowBg"></LinearLayout>
 
 </LinearLayout>
