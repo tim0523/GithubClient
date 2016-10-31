@@ -87,7 +87,8 @@ public class EventMatcher {
         if (EventType.ForkEvent.equals(type)) {
             Repo repository = event.payload.forkee;
             // Verify repository has valid name and owner
-            if (repository != null && !TextUtils.isEmpty(repository.name)
+            if (repository != null
+                    && !TextUtils.isEmpty(repository.name)
                     && repository.owner != null
                     && !TextUtils.isEmpty(repository.owner.login))
                 return repository;

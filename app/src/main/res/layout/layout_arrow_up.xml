@@ -9,4 +9,5 @@
     android:background="@drawable/selector_arrow_up"
     android:clickable="true"
     android:padding="15dp"
-    android:src="@mipmap/arrow_up" />
+    android:src="@mipmap/arrow_up"
+    android:visibility="gone" />
