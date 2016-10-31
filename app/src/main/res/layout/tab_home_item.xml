@@ -21,7 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:background="@drawable/shape_item_count_bg"
-        android:padding="3dp"
+        android:paddingBottom="@dimen/spacing_size_1"
+        android:paddingLeft="@dimen/spacing_size_2"
+        android:paddingRight="@dimen/spacing_size_2"
+        android:paddingTop="@dimen/spacing_size_1"
         android:textSize="10dp"
         android:visibility="gone" />
 </LinearLayout>

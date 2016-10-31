@@ -21,10 +21,10 @@ import okhttp3.HttpUrl;
  */
 public class LoginActivity extends BaseAppCompatActivity {
 
-    @Bind(R.id.web_view)
+    @Bind(R.id.webView)
     WebView mWebView;
 
-    @Bind(R.id.progress_bar)
+    @Bind(R.id.progressBar)
     ProgressBar mProgressBar;
 
     @Override
@@ -66,7 +66,8 @@ public class LoginActivity extends BaseAppCompatActivity {
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
-                mProgressBar.setProgress(newProgress);
+                if (mProgressBar != null)
+                    mProgressBar.setProgress(newProgress);
                 super.onProgressChanged(view, newProgress);
             }
         });

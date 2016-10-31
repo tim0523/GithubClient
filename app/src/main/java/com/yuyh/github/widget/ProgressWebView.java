@@ -28,7 +28,7 @@ import butterknife.ButterKnife;
  */
 public class ProgressWebView extends LinearLayout {
 
-    @Bind(R.id.web_view)
+    @Bind(R.id.webView)
     WebView mWebView;
 
     @Bind(R.id.progress_bar)

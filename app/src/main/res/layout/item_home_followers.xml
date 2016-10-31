@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/spacing_size_3">
+    style="@style/ListItem"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/mIvAvatar"
-        android:layout_width="@dimen/followers_item_avatar_width"
-        android:layout_height="@dimen/followers_item_avatar_height" />
+        style="@style/AvatarXLarge" />
 
     <TextView
         android:id="@+id/mTvFollowerAccount"
@@ -17,7 +14,6 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/spacing_size_3"
         android:layout_toRightOf="@+id/mIvAvatar"
-        android:text="xiaoxiaoshu"
         android:textColor="@color/text_color_gray"
         android:textSize="@dimen/app_text_size_5" />
 </RelativeLayout>

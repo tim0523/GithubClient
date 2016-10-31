@@ -10,7 +10,7 @@ import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
 import com.yuyh.github.bean.resp.User;
 import com.yuyh.github.ui.home.followers.FollowersAdapter;
-import com.yuyh.github.widget.MyDecoration;
+import com.yuyh.github.widget.DividerItemDecoration;
 import com.yuyh.github.widget.ptr.PtrDefaultHandler;
 import com.yuyh.github.widget.ptr.PtrFrameLayout;
 import com.yuyh.github.widget.ptr.PtrHandler;
@@ -28,9 +28,9 @@ import butterknife.Bind;
  */
 public class FollowingFragment extends BaseLazyFragment implements FollowingContract.View {
 
-    @Bind(R.id.frame)
-    PtrFrameLayout mViewRefreshLaout;
-    @Bind(R.id.rvRepos)
+    @Bind(R.id.refreshLayout)
+    PtrFrameLayout mRefreshLaout;
+    @Bind(R.id.recyclerView)
     RecyclerView mRvFollowers;
 
     private FollowingPresenter mPresenter;
@@ -45,10 +45,10 @@ public class FollowingFragment extends BaseLazyFragment implements FollowingCont
 
     private void initView() {
         StoreHouseHeader header = HeaderUtils.getPtrHeader(mActivity);
-        mViewRefreshLaout.setDurationToCloseHeader(2000);
-        mViewRefreshLaout.setHeaderView(header);
-        mViewRefreshLaout.addPtrUIHandler(header);
-        mViewRefreshLaout.setPtrHandler(new PtrHandler() {
+        mRefreshLaout.setDurationToCloseHeader(2000);
+        mRefreshLaout.setHeaderView(header);
+        mRefreshLaout.addPtrUIHandler(header);
+        mRefreshLaout.setPtrHandler(new PtrHandler() {
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
                 return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
@@ -62,7 +62,7 @@ public class FollowingFragment extends BaseLazyFragment implements FollowingCont
 
         mRvFollowers.setItemAnimator(new DefaultItemAnimator());
         mRvFollowers.setLayoutManager(new LinearLayoutManager(mActivity));
-        mRvFollowers.addItemDecoration(new MyDecoration(mActivity, LinearLayoutManager.VERTICAL));
+        mRvFollowers.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
         if (mAdapter == null) {
             mAdapter = new FollowersAdapter(mActivity, new ArrayList<User>());
         }

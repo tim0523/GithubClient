@@ -10,7 +10,7 @@ import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
 import com.yuyh.github.bean.resp.Repo;
 import com.yuyh.github.ui.home.repos.RepoListAdapter;
-import com.yuyh.github.widget.MyDecoration;
+import com.yuyh.github.widget.DividerItemDecoration;
 import com.yuyh.github.widget.ptr.PtrDefaultHandler;
 import com.yuyh.github.widget.ptr.PtrFrameLayout;
 import com.yuyh.github.widget.ptr.PtrHandler;
@@ -28,9 +28,9 @@ import butterknife.Bind;
  */
 public class StarsFragment extends BaseLazyFragment implements StarsContract.View {
 
-    @Bind(R.id.frame)
-    PtrFrameLayout frame;
-    @Bind(R.id.rvRepos)
+    @Bind(R.id.refreshLayout)
+    PtrFrameLayout mRefreshLayout;
+    @Bind(R.id.recyclerView)
     RecyclerView rvRepos;
 
     private StarsPresenter mPresenter;
@@ -50,10 +50,10 @@ public class StarsFragment extends BaseLazyFragment implements StarsContract.Vie
 
     private void initView() {
         StoreHouseHeader header = HeaderUtils.getPtrHeader(mActivity);
-        frame.setDurationToCloseHeader(2000);
-        frame.setHeaderView(header);
-        frame.addPtrUIHandler(header);
-        frame.setPtrHandler(new PtrHandler() {
+        mRefreshLayout.setDurationToCloseHeader(2000);
+        mRefreshLayout.setHeaderView(header);
+        mRefreshLayout.addPtrUIHandler(header);
+        mRefreshLayout.setPtrHandler(new PtrHandler() {
             @Override
             public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
                 return PtrDefaultHandler.checkContentCanBePulledDown(frame, content, header);
@@ -68,7 +68,7 @@ public class StarsFragment extends BaseLazyFragment implements StarsContract.Vie
         rvRepos.setItemAnimator(new DefaultItemAnimator());
         mLayoutManager = new LinearLayoutManager(mActivity);
         rvRepos.setLayoutManager(mLayoutManager);
-        rvRepos.addItemDecoration(new MyDecoration(mActivity, LinearLayoutManager.HORIZONTAL));
+        rvRepos.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
         mAdapter = new RepoListAdapter(mActivity, mList = new ArrayList<>());
         rvRepos.setAdapter(mAdapter);
     }
@@ -83,7 +83,7 @@ public class StarsFragment extends BaseLazyFragment implements StarsContract.Vie
 
     @Override
     public void showMyStars(int page, List<Repo> list) {
-        frame.refreshComplete();
+        mRefreshLayout.refreshComplete();
         if (page == 1)
             mAdapter.clear();
         mAdapter.addAll(list);

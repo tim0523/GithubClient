@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/progressBar"
         style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         android:visibility="gone" />
 
     <WebView
-        android:id="@+id/web_view"
+        android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

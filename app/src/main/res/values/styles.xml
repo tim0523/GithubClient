@@ -41,7 +41,9 @@
     <style name="ImageView.Hamburger" parent="Widget.AppCompat.ActionButton">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/abc_action_bar_overflow_padding_start_material</item>
+        <item name="android:layout_marginBottom">
+            @dimen/abc_action_bar_overflow_padding_start_material
+        </item>
     </style>
 
     <style name="ImageView.GuillotineItem">
@@ -67,6 +69,85 @@
     <style name="ListSpinner" parent="Spinner">
         <item name="android:layout_width">64dp</item>
         <item name="android:layout_height">64dp</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textSize">18dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_color_black</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="ListTitleText" parent="TitleText" />
+
+    <style name="SubtitleText">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/text_color_gray</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="ListSubtitleText" parent="SubtitleText" />
+
+    <style name="ListItem">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:background">@drawable/touch_bg</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="AvatarXXXLarge">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
+    </style>
+
+    <style name="AvatarXLarge">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="AvatarLarge">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+    </style>
+
+    <style name="AvatarMedium">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+    </style>
+
+    <style name="AvatarSmall">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+    </style>
+
+    <style name="TextIcon">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_icon</item>
+    </style>
+
+    <style name="ListIcon" parent="TextIcon">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="EventIcon" parent="TextIcon">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="PrimaryIcon" parent="TextIcon">
+        <item name="android:textSize">28dp</item>
+    </style>
+
+    <style name="TabIcon" parent="TextIcon">
+        <item name="android:textSize">20dp</item>
     </style>
 
 </resources>

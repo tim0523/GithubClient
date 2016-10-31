@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <com.yuyh.github.widget.ptr.PtrFrameLayout xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/frame"
+        android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         ptr:ptr_duration_to_close="300"
@@ -15,7 +15,7 @@
         ptr:ptr_resistance="1.7">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvRepos"
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
