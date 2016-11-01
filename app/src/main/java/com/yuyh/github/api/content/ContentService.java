@@ -1,5 +1,6 @@
 package com.yuyh.github.api.content;
 
+import com.yuyh.github.bean.info.ReadmeInfo;
 import com.yuyh.github.bean.resp.Content;
 
 import retrofit2.http.Body;
@@ -15,7 +16,16 @@ import rx.Observable;
  */
 public interface ContentService {
 
-    //Sync
+    /**
+     * Get's readme content.
+     *
+     * @param owner
+     * @param repo
+     * @return
+     */
+    @GET("/repos/{owner}/{repo}/readme")
+    Observable<ReadmeInfo> checkReadme(@Path("owner") String owner, @Path("repo") String repo);
+
     @POST("/markdown/raw")
     Observable<String> markdown(@Body String readme);
 

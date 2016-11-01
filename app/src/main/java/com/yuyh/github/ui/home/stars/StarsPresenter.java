@@ -1,7 +1,7 @@
 package com.yuyh.github.ui.home.stars;
 
-import com.yuyh.github.api.repo.Sort;
-import com.yuyh.github.api.repo.StarListClient;
+import com.yuyh.github.api.repos.Sort;
+import com.yuyh.github.api.repos.StarListClient;
 import com.yuyh.github.base.RxPresenter;
 import com.yuyh.github.bean.resp.Repo;
 

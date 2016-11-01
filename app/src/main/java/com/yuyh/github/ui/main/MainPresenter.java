@@ -74,7 +74,8 @@ public class MainPresenter extends RxPresenter implements MainContract.Presenter
                     @Override
                     public void onNext(User user) {
                         DataStorage.getInstance().saveUserInfo(user);
-                        DataStorage.getInstance().saveUsername(user.login);
+                        DataStorage.getInstance().saveAccount(user.login);
+                        DataStorage.getInstance().saveUsername(user.name);
                         view.showUserInfo(user);
                     }
                 });

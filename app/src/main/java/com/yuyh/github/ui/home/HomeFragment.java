@@ -26,33 +26,23 @@ import butterknife.Bind;
  */
 public class HomeFragment extends BaseLazyFragment {
 
-    @Bind(R.id.home_indicator)
-    ScrollIndicatorView scrollIndicatorView;
-    @Bind(R.id.home_viewPager)
-    ViewPager viewPager;
+    @Bind(R.id.indicator)
+    ScrollIndicatorView mIndicatorView;
+    @Bind(R.id.viewPager)
+    ViewPager mViewPager;
 
-    private IndicatorViewPager indicatorViewPager;
+    private IndicatorViewPager mIndicatorViewPager;
 
 
     @Override
     protected void onCreateViewLazy(Bundle savedInstanceState) {
         super.onCreateViewLazy(savedInstanceState);
-        setContentView(R.layout.fragment_home);
+        setContentView(R.layout.common_indicator_layout);
         initView();
     }
 
     private void initView() {
         String[] names = getResources().getStringArray(R.array.home_tabs);
-
-        scrollIndicatorView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        scrollIndicatorView.setScrollBar(new ColorBar(mActivity,
-                ContextCompat.getColor(mActivity, R.color.tab_scrollbar), ScreenUtils.dpToPxInt(3)));
-        scrollIndicatorView.setSplitAuto(true);
-        scrollIndicatorView.setOnTransitionListener(new OnTransitionTextListener().setColor(ContextCompat.getColor(mActivity, R.color.tab_selected),
-                ContextCompat.getColor(mActivity, R.color.tab_unselected)));
-
-        viewPager.setOffscreenPageLimit(names.length);
-        indicatorViewPager = new IndicatorViewPager(scrollIndicatorView, viewPager);
         User user = DataStorage.getInstance().getUserInfo();
         List<HomeItem> list = new ArrayList<>();
         list.add(new HomeItem(names[0]));
@@ -60,6 +50,17 @@ public class HomeFragment extends BaseLazyFragment {
         list.add(new HomeItem(names[2]));
         list.add(new HomeItem(names[3], user.followers));
         list.add(new HomeItem(names[4], user.following));
-        indicatorViewPager.setAdapter(new HomeAdapter(mActivity, list, getChildFragmentManager()));
+
+        mIndicatorView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        mIndicatorView.setScrollBar(new ColorBar(mActivity,
+                ContextCompat.getColor(mActivity, R.color.tab_scrollbar), ScreenUtils.dpToPxInt(3)));
+        mIndicatorView.setSplitAuto(true);
+        mIndicatorView.setOnTransitionListener(new OnTransitionTextListener().setColor(ContextCompat.getColor(mActivity, R.color.tab_selected),
+                ContextCompat.getColor(mActivity, R.color.tab_unselected)));
+
+        mViewPager.setOffscreenPageLimit(names.length);
+
+        mIndicatorViewPager = new IndicatorViewPager(mIndicatorView, mViewPager);
+        mIndicatorViewPager.setAdapter(new HomeAdapter(mActivity, list, getChildFragmentManager()));
     }
 }

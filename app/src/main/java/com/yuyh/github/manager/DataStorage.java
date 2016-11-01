@@ -11,6 +11,7 @@ public class DataStorage {
 
     public static final String KEY_URL = "KEY_URL";
     private static final String USER_NAME = DataStorage.class.getSimpleName() + ".USER_NAME";
+    private static final String USER_ACCOUNT = DataStorage.class.getSimpleName() + ".USER_ACCOUNT";
     private static final String USER_TOKEN = DataStorage.class.getSimpleName() + ".USER_TOKEN";
     private static final String USER = DataStorage.class.getSimpleName() + ".USER";
 
@@ -38,6 +39,14 @@ public class DataStorage {
 
     public String getUserName() {
         return SPManager.getInstance().getString(USER_NAME, null);
+    }
+
+    public void saveAccount(String account) {
+        SPManager.getInstance().putString(USER_ACCOUNT, account);
+    }
+
+    public String getAccount() {
+        return SPManager.getInstance().getString(USER_ACCOUNT, null);
     }
 
     public void saveUrl(String url) {

@@ -1,4 +1,4 @@
-package com.yuyh.github.api.repo;
+package com.yuyh.github.api.repos;
 
 import com.yuyh.github.api.client.BaseClient;
 import com.yuyh.github.bean.resp.Repo;
@@ -25,9 +25,9 @@ public class StarListClient extends BaseClient<List<Repo>> {
     @Override
     protected Observable<List<Repo>> getApiObservable(Retrofit retrofit) {
         if (page < 0) {
-            return retrofit.create(RepoService.class).userStarredReposList(page, sort);
+            return retrofit.create(ReposService.class).userStarredReposList(page, sort);
         } else {
-            return retrofit.create(RepoService.class).userStarredReposList(sort);
+            return retrofit.create(ReposService.class).userStarredReposList(sort);
         }
     }
 }

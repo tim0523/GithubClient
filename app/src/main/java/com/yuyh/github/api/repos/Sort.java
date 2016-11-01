@@ -1,4 +1,4 @@
-package com.yuyh.github.api.repo;
+package com.yuyh.github.api.repos;
 
 import android.support.annotation.StringDef;
 

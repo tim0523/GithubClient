@@ -41,14 +41,14 @@ public class OverviewPresenter extends RxPresenter implements OverviewContract.P
                         @Override
                         public Observable<List<GithubEvent>> call(User user) {
                             view.showMyInfo(user);
-                            return new UserEventsClient(DataStorage.getInstance().getUserName(), page)
+                            return new UserEventsClient(DataStorage.getInstance().getAccount(), page)
                                     .observable()
                                     .subscribeOn(Schedulers.io())
                                     .observeOn(AndroidSchedulers.mainThread());
                         }
                     });
         } else {
-            observable = new UserEventsClient(DataStorage.getInstance().getUserName(), page)
+            observable = new UserEventsClient(DataStorage.getInstance().getAccount(), page)
                     .observable()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread());

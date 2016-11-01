@@ -2,11 +2,18 @@
 <resources>
 
     <string-array name="home_tabs">
-        <item>Overview</item>
-        <item>Repos</item>
-        <item>Stars</item>
-        <item>Followers</item>
-        <item>Following</item>
+        <item>@string/overview</item>
+        <item>@string/repos</item>
+        <item>@string/stars</item>
+        <item>@string/followers</item>
+        <item>@string/following</item>
+    </string-array>
+
+    <string-array name="repo_tabs">
+        <item>Dynamics</item>
+        <item>Code</item>
+        <item>Submit</item>
+        <item>Issue</item>
     </string-array>
 
 </resources>

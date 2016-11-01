@@ -2,6 +2,7 @@ package com.yuyh.github.bean.resp;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.security.Permissions;
 import java.util.Date;
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class Repo {
+public class Repo implements Serializable {
 
     public boolean fork;
     @SerializedName("private")

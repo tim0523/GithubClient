@@ -25,6 +25,9 @@ public final class HeaderInterceptor implements Interceptor {
         if (!TextUtils.isEmpty(DataStorage.getInstance().getUserToken())) {
             builder.addHeader("Authorization", "token " + DataStorage.getInstance().getUserToken());
         }
+        if(original.url().toString().contains("/markdown/raw")){
+            builder.addHeader("Content-type", "text/plain");
+        }
         if (original.url().toString().contains("/login/oauth/access_token")) {
             builder.addHeader("Accept", "application/json");
         } else {

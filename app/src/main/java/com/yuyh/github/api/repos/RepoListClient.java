@@ -1,4 +1,4 @@
-package com.yuyh.github.api.repo;
+package com.yuyh.github.api.repos;
 
 import android.text.TextUtils;
 
@@ -28,8 +28,8 @@ public class RepoListClient extends BaseClient<List<Repo>> {
     @Override
     protected Observable<List<Repo>> getApiObservable(Retrofit retrofit) {
         if (TextUtils.isEmpty(username))
-            return retrofit.create(RepoService.class).userReposList(sort);
+            return retrofit.create(ReposService.class).userReposList(sort);
         else
-            return retrofit.create(RepoService.class).userReposList(username, sort);
+            return retrofit.create(ReposService.class).userReposList(username, sort);
     }
 }

@@ -10,6 +10,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 import rx.Observable;
 
 /**
@@ -37,6 +38,7 @@ public abstract class BaseClient<T> {
         retrofit = new Retrofit.Builder()
                 .baseUrl(new ApiClientImpl(hostname).getApiEndpoint())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create()) // 添加Rx适配器
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create()) // 添加Gson转换器
                 .client(client)
                 .build();

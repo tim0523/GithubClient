@@ -1,12 +1,13 @@
 package com.yuyh.github.bean.resp;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class Commit extends ShaUrl {
+public class Commit extends ShaUrl implements Serializable {
 
     private static final int MAX_COMMIT_LENGHT = 80;
     public GitCommit commit;

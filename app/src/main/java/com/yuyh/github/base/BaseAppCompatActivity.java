@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 
 import com.yuyh.github.R;
 import com.yuyh.github.utils.StatusBarCompat;
@@ -34,6 +36,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
     protected Context mContext = null;
 
     protected Toolbar mToolbar;
+    protected ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +86,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mToolbar = ButterKnife.findById(this, R.id.common_toolbar);
         initToolbar(mToolbar);
+        progressBar = ButterKnife.findById(this, R.id.progress_bar);
     }
 
     public void initToolbar(Toolbar toolbar) {
@@ -170,6 +174,18 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
 
     public Toolbar getToolbar() {
         return mToolbar;
+    }
+
+    protected void showLoadding() {
+        if(progressBar != null){
+            progressBar.setVisibility(View.VISIBLE);
+        }
+    }
+    
+    protected void hideLoadding(){
+        if(progressBar != null){
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
 }
