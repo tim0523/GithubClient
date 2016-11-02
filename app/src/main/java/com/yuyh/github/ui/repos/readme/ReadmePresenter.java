@@ -9,7 +9,7 @@ import com.yuyh.github.base.RxPresenter;
 import com.yuyh.github.bean.RequestMarkdown;
 import com.yuyh.github.bean.resp.Content;
 import com.yuyh.github.bean.resp.Repo;
-import com.yuyh.github.utils.InfoUtils;
+import com.yuyh.github.utils.core.InfoUtils;
 import com.yuyh.github.utils.LogUtils;
 
 import java.nio.charset.Charset;
@@ -81,6 +81,7 @@ public class ReadmePresenter extends RxPresenter implements ReadmeContract.Prese
                     @Override
                     public void onError(Throwable e) {
                         LogUtils.e("readme:" + e.toString());
+                        view.showReadme("");
                     }
 
                     @Override

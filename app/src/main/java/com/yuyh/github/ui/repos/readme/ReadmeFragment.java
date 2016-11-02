@@ -7,6 +7,7 @@ import android.webkit.WebView;
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
 import com.yuyh.github.bean.resp.Repo;
+import com.yuyh.github.utils.FileUtils;
 
 import butterknife.Bind;
 
@@ -32,14 +33,6 @@ public class ReadmeFragment extends BaseLazyFragment implements ReadmeContract.V
     private ReadmePresenter mPresenter;
     private Repo repo;
 
-    private static final String PAGE_START = "<!DOCTYPE html><html lang=\"en\"> <head> <title></title>" +
-            "<meta charset=\"UTF-8\"> " +
-            "<meta name=\"viewport\" content=\"width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;\"/>" +
-            "<script src=\"intercept.js\"></script>" +
-            "<link href=\"github.css\" rel=\"stylesheet\"> </head> <body>";
-
-    private static final String PAGE_END = "</body></html>";
-
     @Override
     protected void onCreateViewLazy(Bundle savedInstanceState) {
         super.onCreateViewLazy(savedInstanceState);
@@ -57,7 +50,13 @@ public class ReadmeFragment extends BaseLazyFragment implements ReadmeContract.V
         WebSettings settings = mWvReadme.getSettings();
         settings.setJavaScriptEnabled(true);
         mWvReadme.addJavascriptInterface(this, "Readme");
-        mWvReadme.loadDataWithBaseURL("file:///android_asset/", PAGE_START + content + PAGE_END, "text/html", "UTF-8", null);
+        String md = FileUtils.readAssetsFile("readme.html")
+                .replaceAll("\\r\\n", "")
+                .replaceAll("\\n", "");
+        String uri = "file:///android_asset/";
+        String mime = "text/html";
+        String charset = "UTF-8";
+        mWvReadme.loadDataWithBaseURL(uri, String.format(md, content), mime, charset, null);
         hideLoadding();
     }
 }

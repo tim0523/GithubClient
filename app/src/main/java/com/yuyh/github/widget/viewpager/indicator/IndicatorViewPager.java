@@ -178,18 +178,14 @@ public class IndicatorViewPager {
 		@Override
 		public void onItemSelected(View selectItemView, int select, int preSelect) {
 			if (viewPager instanceof SViewPager) {
-				viewPager.setCurrentItem(select, ((SViewPager) viewPager).isCanScroll());
+				viewPager.setCurrentItem(select, ((SViewPager) viewPager).isEnableScroll());
 			} else {
 				viewPager.setCurrentItem(select, true);
 			}
-			// if (onIndicatorPageChangeListener != null) {
-			// onIndicatorPageChangeListener.onIndicatorPageChange(preSelect,
-			// select);
-			// }
 		}
 	};
 
-	public static interface OnIndicatorPageChangeListener {
+	public interface OnIndicatorPageChangeListener {
 		/**
 		 * 注意 preItem 可能为 -1。表示之前没有选中过,每次adapter.notifyDataSetChanged也会将preItem
 		 * 设置为-1；
@@ -221,7 +217,7 @@ public class IndicatorViewPager {
 		}
 	};
 
-	public static interface IndicatorPagerAdapter {
+	public interface IndicatorPagerAdapter {
 
 		PagerAdapter getPagerAdapter();
 

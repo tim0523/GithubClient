@@ -44,11 +44,11 @@ public class SViewPager extends ViewPager {
         canScroll = !canScroll;
     }
 
-    public void setCanScroll(boolean canScroll) {
+    public void setEnableScroll(boolean canScroll) {
         this.canScroll = canScroll;
     }
 
-    public boolean isCanScroll() {
+    public boolean isEnableScroll() {
         return canScroll;
     }
 

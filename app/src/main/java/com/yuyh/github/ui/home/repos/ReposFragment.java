@@ -9,6 +9,8 @@ import android.view.View;
 import com.yuyh.github.R;
 import com.yuyh.github.base.BaseLazyFragment;
 import com.yuyh.github.bean.resp.Repo;
+import com.yuyh.github.support.OnRVItemClickListener;
+import com.yuyh.github.ui.repos.ReposActivity;
 import com.yuyh.github.widget.DividerItemDecoration;
 import com.yuyh.github.widget.ptr.PtrDefaultHandler;
 import com.yuyh.github.widget.ptr.PtrFrameLayout;
@@ -25,7 +27,8 @@ import butterknife.Bind;
  * @author yuyh.
  * @date 2016/10/29.
  */
-public class ReposFragment extends BaseLazyFragment implements ReposContract.View {
+public class ReposFragment extends BaseLazyFragment
+        implements ReposContract.View, OnRVItemClickListener<Repo> {
 
     @Bind(R.id.refreshLayout)
     PtrFrameLayout mRefreshLayout;
@@ -69,6 +72,7 @@ public class ReposFragment extends BaseLazyFragment implements ReposContract.Vie
         rvRepos.setLayoutManager(mLayoutManager);
         rvRepos.addItemDecoration(new DividerItemDecoration(mActivity, LinearLayoutManager.VERTICAL));
         mAdapter = new RepoListAdapter(mActivity, mList = new ArrayList<>());
+        mAdapter.setOnItemClickListener(this);
         rvRepos.setAdapter(mAdapter);
     }
 
@@ -86,6 +90,11 @@ public class ReposFragment extends BaseLazyFragment implements ReposContract.Vie
         mAdapter.clear();
         mAdapter.addAll(list);
         hideLoadding();
+    }
+
+    @Override
+    public void onItemClick(View view, int position, Repo item) {
+        ReposActivity.start(mActivity, item);
     }
 
     @Override

@@ -7,7 +7,7 @@ import com.yuyh.github.api.repo.RepoInfoClient;
 import com.yuyh.github.base.RxPresenter;
 import com.yuyh.github.bean.info.ReadmeInfo;
 import com.yuyh.github.bean.resp.Repo;
-import com.yuyh.github.utils.InfoUtils;
+import com.yuyh.github.utils.core.InfoUtils;
 import com.yuyh.github.utils.LogUtils;
 
 import rx.Observer;

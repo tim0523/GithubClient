@@ -97,6 +97,11 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
+    <style name="HeaderTitleText" parent="TitleText">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <style name="ListTitleText" parent="TitleText" />
 
     <style name="SubtitleText">
@@ -106,7 +111,19 @@
         <item name="android:layout_width">wrap_content</item>
     </style>
 
+    <style name="CodeText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
     <style name="ListSubtitleText" parent="SubtitleText" />
+
+    <style name="ListNumericSubtitleText" parent="ListSubtitleText">
+        <item name="android:singleLine">true</item>
+    </style>
 
     <style name="ListItem">
         <item name="android:layout_height">wrap_content</item>
@@ -116,7 +133,10 @@
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:background">@drawable/touch_bg</item>
-        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="HeaderListItem" parent="ListItem">
+
     </style>
 
     <style name="AvatarXXXLarge">
@@ -152,7 +172,7 @@
     </style>
 
     <style name="ListIcon" parent="TextIcon">
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">16dp</item>
     </style>
 
     <style name="EventIcon" parent="TextIcon">
@@ -165,6 +185,13 @@
 
     <style name="TabIcon" parent="TextIcon">
         <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="ListView">
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:divider">@null</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:fadingEdge">none</item>
     </style>
 
 </resources>

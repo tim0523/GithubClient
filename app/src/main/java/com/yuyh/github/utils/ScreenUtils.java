@@ -4,6 +4,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -13,6 +14,8 @@ import android.view.WindowManager;
 import com.yuyh.github.GithubApp;
 
 import java.lang.reflect.Field;
+
+import static android.util.TypedValue.COMPLEX_UNIT_DIP;
 
 /**
  * Android screen utils
@@ -85,6 +88,18 @@ public class ScreenUtils {
             result = context.getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+
+    /**
+     * Get pixels from dps
+     *
+     * @param resources
+     * @param dp
+     * @return pixels
+     */
+    public static int getIntPixels(final Resources resources, final int dp) {
+        float pixels = TypedValue.applyDimension(COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
+        return (int) Math.floor(pixels + 0.5F);
     }
 
     public static int getActionBarSize(Context context) {

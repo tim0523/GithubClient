@@ -123,7 +123,7 @@ public class BaseLazyFragment extends BaseFragment {
             super.setContentView(layoutResID);
         }
         ButterKnife.bind(this, getContentView());
-        progressBar = ButterKnife.findById(getContentView(), R.id.progress_bar);
+        progressBar = ButterKnife.findById(getContentView(), R.id.progressBar);
         emptyView = ButterKnife.findById(getContentView(), R.id.emptyView);
     }
 
@@ -175,6 +175,18 @@ public class BaseLazyFragment extends BaseFragment {
     protected void hideLoadding() {
         if (progressBar != null) {
             progressBar.setVisibility(View.GONE);
+        }
+    }
+
+    protected void showEmptyView() {
+        if (emptyView != null) {
+            emptyView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    protected void hideEmptyView() {
+        if (emptyView != null) {
+            emptyView.setVisibility(View.GONE);
         }
     }
 }

@@ -3,7 +3,6 @@ package com.yuyh.github.ui.repos;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 
 import com.yuyh.github.R;
@@ -11,12 +10,13 @@ import com.yuyh.github.base.BaseSwipeBackCompatActivity;
 import com.yuyh.github.bean.resp.Repo;
 import com.yuyh.github.bean.resp.User;
 import com.yuyh.github.bean.support.HomeItem;
-import com.yuyh.github.utils.RepositoryUtils;
+import com.yuyh.github.utils.core.RepositoryUtils;
 import com.yuyh.github.utils.ScreenUtils;
 import com.yuyh.github.widget.viewpager.indicator.IndicatorViewPager;
 import com.yuyh.github.widget.viewpager.indicator.ScrollIndicatorView;
 import com.yuyh.github.widget.viewpager.indicator.slidebar.ColorBar;
 import com.yuyh.github.widget.viewpager.indicator.transition.OnTransitionTextListener;
+import com.yuyh.github.widget.viewpager.viewpager.SViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +30,7 @@ import butterknife.Bind;
 public class ReposActivity extends BaseSwipeBackCompatActivity implements ReposContract.View {
 
     public static final String PARA_REPO = "repo";
+    private ReposAdapter mAdapter;
 
     public static void start(Context context, Repo repo) {
         context.startActivity(new Intent(context, ReposActivity.class)
@@ -39,7 +40,7 @@ public class ReposActivity extends BaseSwipeBackCompatActivity implements ReposC
     @Bind(R.id.indicator)
     ScrollIndicatorView mIndicatorView;
     @Bind(R.id.viewPager)
-    ViewPager mViewPager;
+    SViewPager mViewPager;
 
     private IndicatorViewPager mIndicatorViewPager;
 
@@ -57,6 +58,8 @@ public class ReposActivity extends BaseSwipeBackCompatActivity implements ReposC
     @Override
     protected void initViewsAndEvents() {
         showLoadding();
+
+        mViewPager.setEnableScroll(false);
 
         repo = (Repo) getIntent().getSerializableExtra(PARA_REPO);
         owner = repo.owner;
@@ -118,7 +121,13 @@ public class ReposActivity extends BaseSwipeBackCompatActivity implements ReposC
         mViewPager.setOffscreenPageLimit(names.length);
 
         mIndicatorViewPager = new IndicatorViewPager(mIndicatorView, mViewPager);
-        mIndicatorViewPager.setAdapter(new ReposAdapter(mContext, list, getSupportFragmentManager(), hasReadme, repo));
+        mIndicatorViewPager.setAdapter(mAdapter = new ReposAdapter(mContext, list, getSupportFragmentManager(), hasReadme, repo));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!mAdapter.onBackPressed())
+            super.onBackPressed();
     }
 
     @Override

@@ -7,6 +7,9 @@ import android.support.v4.app.FragmentManager;
 import com.yuyh.github.bean.resp.Repo;
 import com.yuyh.github.bean.support.HomeItem;
 import com.yuyh.github.ui.home.HomeAdapter;
+import com.yuyh.github.ui.repos.code.CodeFragment;
+import com.yuyh.github.ui.repos.commit.CommitFragment;
+import com.yuyh.github.ui.repos.dynamics.DynamicsFragment;
 import com.yuyh.github.ui.repos.readme.ReadmeFragment;
 
 import java.util.List;
@@ -20,6 +23,8 @@ public class ReposAdapter extends HomeAdapter {
     private boolean hasReadme;
     private Repo repo;
 
+    private CodeFragment codeFragment;
+
     public ReposAdapter(Context context, List<HomeItem> names, FragmentManager fragmentManager,
                         boolean hasReadme, Repo repo) {
         super(context, names, fragmentManager);
@@ -29,16 +34,27 @@ public class ReposAdapter extends HomeAdapter {
 
     @Override
     public Fragment getFragmentForPage(int position) {
-        Fragment fragment;
         position = hasReadme ? position : position + 1;
         switch (position) {
             case 0:
-                fragment = ReadmeFragment.instance(repo);
-                break;
+                return ReadmeFragment.instance(repo);
+            case 1:
+                return DynamicsFragment.instance(repo);
+            case 2:
+                return (codeFragment = CodeFragment.instance(repo));
+            case 3:
+                return CommitFragment.instance(repo);
             default:
-                fragment = ReadmeFragment.instance(repo);
-                break;
+                return ReadmeFragment.instance(repo);
         }
-        return fragment;
+    }
+
+    /**
+     * Pass back button pressed event down to fragments
+     *
+     * @return true if handled, false otherwise
+     */
+    public boolean onBackPressed() {
+        return codeFragment != null && codeFragment.onBackPressed();
     }
 }

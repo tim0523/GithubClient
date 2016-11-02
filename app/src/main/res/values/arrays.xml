@@ -12,7 +12,7 @@
     <string-array name="repo_tabs">
         <item>Dynamics</item>
         <item>Code</item>
-        <item>Submit</item>
+        <item>Commit</item>
         <item>Issue</item>
     </string-array>
 

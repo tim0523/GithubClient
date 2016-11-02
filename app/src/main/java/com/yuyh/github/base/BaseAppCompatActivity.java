@@ -86,7 +86,7 @@ public abstract class BaseAppCompatActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mToolbar = ButterKnife.findById(this, R.id.common_toolbar);
         initToolbar(mToolbar);
-        progressBar = ButterKnife.findById(this, R.id.progress_bar);
+        progressBar = ButterKnife.findById(this, R.id.progressBar);
     }
 
     public void initToolbar(Toolbar toolbar) {

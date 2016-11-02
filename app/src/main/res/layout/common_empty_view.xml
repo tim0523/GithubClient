@@ -19,6 +19,7 @@
         android:layout_marginTop="10dp"
         android:drawablePadding="10dp"
         android:gravity="center"
+        android:textColor="#707070"
         android:text="@string/no_data" />
 
 </LinearLayout>

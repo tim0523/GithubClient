@@ -1,4 +1,4 @@
-package com.yuyh.github.utils;
+package com.yuyh.github.utils.core;
 
 import android.text.TextUtils;
 

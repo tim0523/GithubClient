@@ -31,7 +31,7 @@ public class ProgressWebView extends LinearLayout {
     @Bind(R.id.webView)
     WebView mWebView;
 
-    @Bind(R.id.progress_bar)
+    @Bind(R.id.progressBar)
     ProgressBar mProgressBar;
 
     private Context mContext;

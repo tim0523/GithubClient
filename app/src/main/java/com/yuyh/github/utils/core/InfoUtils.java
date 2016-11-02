@@ -1,4 +1,4 @@
-package com.yuyh.github.utils;
+package com.yuyh.github.utils.core;
 
 import com.yuyh.github.bean.info.CommitInfo;
 import com.yuyh.github.bean.info.IssueInfo;

@@ -73,12 +73,11 @@ public interface RepoService {
                   Callback<List<Release>> callback);
 
     @GET("/repos/{owner}/{name}/events")
-    void events(@Path("owner") String owner, @Path("name") String repo,
-                Callback<List<GithubEvent>> eventsCallback);
+    Observable<List<GithubEvent>> events(@Path("owner") String owner, @Path("name") String repo);
 
     @GET("/repos/{owner}/{name}/events")
-    void events(@Path("owner") String owner, @Path("name") String repo, @Query("page") int page,
-                Callback<List<GithubEvent>> eventsCallback);
+    Observable<List<GithubEvent>> events(@Path("owner") String owner, @Path("name") String repo,
+                                         @Query("page") int page);
 
     @GET("/repos/{owner}/{name}/forks")
     void listForks(@Path("owner") String owner, @Path("name") String repo, @Query("sort") String sort,
@@ -171,13 +170,6 @@ public interface RepoService {
     @PATCH("/repos/{owner}/{name}")
     Observable<Repo> edit(@Path("owner") String owner, @Path("name") String repo,
                           @Body RepoRequest repoRequestDTO);
-
-    @GET("/repos/{owner}/{name}/events")
-    List<GithubEvent> events(@Path("owner") String owner, @Path("name") String repo);
-
-    @GET("/repos/{owner}/{name}/events")
-    List<GithubEvent> events(@Path("owner") String owner, @Path("name") String repo,
-                             @Query("page") int page);
 
     @GET("/repos/{owner}/{name}/forks")
     List<Repo> listForks(@Path("owner") String owner, @Path("name") String repo,

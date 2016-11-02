@@ -27,4 +27,5 @@
     <color name="text_description">#666666</color>
     <color name="text_color_black">#2c2c2c</color>
     <color name="text_color_gray">#8b8682</color>
+    <color name="text_link">#4183B4</color>
 </resources>

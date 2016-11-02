@@ -23,7 +23,7 @@ public class EventsAdapter extends EasyRVAdapter<GithubEvent> {
     private OnRVItemClickListener<GithubEvent> listener;
 
     public EventsAdapter(Context context, List<GithubEvent> list) {
-        super(context, list, R.layout.item_home_events);
+        super(context, list, R.layout.item_common_events);
         manager = new GithubViewManager();
     }
 

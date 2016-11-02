@@ -21,7 +21,7 @@ import com.yuyh.github.bean.resp.Team;
 import com.yuyh.github.bean.resp.User;
 import com.yuyh.github.bean.support.FollowEventPayload;
 import com.yuyh.github.bean.support.GistEventPayload;
-import com.yuyh.github.utils.IssueUtils;
+import com.yuyh.github.utils.core.IssueUtils;
 import com.yuyh.github.utils.ScreenUtils;
 import com.yuyh.github.utils.StyledText;
 import com.yuyh.github.utils.TimeUtils;

@@ -32,7 +32,7 @@ public interface GitDataService {
     //Sync
     @GET("/repos/{owner}/{repo}/git/{ref}")
     Observable<GitReference> repoReference(@Path("owner") String owner, @Path("repo") String name,
-                                           @Path(value = "ref") String ref);
+                                           @Path(value = "ref", encoded = true) String ref);
 
     @GET("/repos/{owner}/{repo}/git/commits/{sha}")
     Observable<GitCommit> repoCommit(@Path("owner") String owner, @Path("repo") String name,
